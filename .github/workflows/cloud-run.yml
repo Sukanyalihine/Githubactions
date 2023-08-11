@@ -5,7 +5,7 @@ on:
     - master
 
 env:
-  PROJECT_ID: ${{ secrets.Run_project }}
+  PROJECT_ID: ${{ secrets.RUN_PROJECT }}
   RUN_REGION: us-central1
   SERVICE_NAME: helloworld-python
 
