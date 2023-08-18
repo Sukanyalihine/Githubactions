@@ -6,7 +6,7 @@ on:
       - main
 
 env:
-  PROJECT_ID: ${{ secrets.RUN_PROJECT }}
+  PROJECT_ID: ordinal-cacao-395605
   RUN_REGION: us-central1
   SERVICE_NAME: helloworld-python
 
