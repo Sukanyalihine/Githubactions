@@ -1,15 +1,3 @@
-name: Build and Deploy to Cloud Run
-
-on:
-  push:
-    branches:
-      - main
-
-env:
-  PROJECT_ID: ordinal-cacao-395605
-  RUN_REGION: us-central1
-  SERVICE_NAME: helloworld-python
-
 jobs:
   setup-build-deploy:
     name: Setup, Build, and Deploy
@@ -28,6 +16,7 @@ jobs:
       - name: Build
         run: |
           gcloud builds submit \
+            --project ${{ env.PROJECT_ID }} \
             --quiet \
             --tag "gcr.io/${{ env.PROJECT_ID }}/$SERVICE_NAME:$GITHUB_SHA"
 
