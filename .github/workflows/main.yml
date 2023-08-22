@@ -29,11 +29,6 @@ jobs:
         run: gcloud auth login
         # This step will open a browser window for authentication
         # and store the credentials in the runner environment.
-
-      - name: Set Google Cloud Active Account
-        run: gcloud config set account ACCOUNT
-        env:
-          GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
           
       - name: 'Use gcloud CLI'
         run: 'gcloud auth list --filter=status:ACTIVE --format="value(account)"'
