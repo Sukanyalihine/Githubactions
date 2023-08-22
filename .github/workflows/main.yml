@@ -22,9 +22,11 @@ jobs:
       # Setup gcloud CLI
       - uses: google-github-actions/setup-gcloud@v1
         with:
-          version: "290.0.1"
+          version: "363.0.0"
           service_account_key: ${{ secrets.GCP_SA_KEY_JSON }}
           project_id: ${{ secrets.GCP_PROJECT_ID }}
+      - name: 'Use gcloud CLI'
+        run: 'gcloud auth list --filter=status:ACTIVE --format="value(account)"'
 
       # Build and push image to Google Container Registry
       - name: Build
