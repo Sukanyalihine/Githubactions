@@ -25,6 +25,16 @@ jobs:
           version: "290.0.1"
           service_account_key: ${{ secrets.GCP_SA_KEY_JSON }}
           project_id: ${{ secrets.GCP_PROJECT_ID }}
+      - name: Authenticate with Google Cloud
+        run: gcloud auth login
+        # This step will open a browser window for authentication
+        # and store the credentials in the runner environment.
+
+      - name: Set Google Cloud Active Account
+        run: gcloud config set account ACCOUNT
+        env:
+          ACCOUNT: sukanyalihine1@gmail.com  
+          
       - name: 'Use gcloud CLI'
         run: 'gcloud auth list --filter=status:ACTIVE --format="value(account)"'
 
