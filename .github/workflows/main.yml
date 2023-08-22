@@ -19,13 +19,12 @@ jobs:
       - run: |
           sudo apt-get install python2.7
           export CLOUDSDK_PYTHON="/usr/bin/python2"
-
       - name: Authenticate with Google Cloud
         run: |
-          gcloud auth login
-          gcloud config set account $ACCOUNT
+          echo "$GCP_SA_KEY_JSON" > key.json
+          gcloud auth activate-service-account --key-file=key.json
         env:
-          ACCOUNT: 1017177482405@cloudbuild.gserviceaccount.com    
+          GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
       # Setup gcloud CLI
       - uses: google-github-actions/setup-gcloud@v1
         with:
